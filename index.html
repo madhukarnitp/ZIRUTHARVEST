@@ -4,24 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zirut Harvest – B2B Partner Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Instrument+Sans:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cream: #F9F5EE;
-    --cream-dark: #EDE6D6;
-    --forest: #2D4A2D;
-    --forest-mid: #3D6B3D;
-    --forest-light: #5C8C5C;
-    --gold: #C4842A;
-    --gold-light: #E8A84A;
-    --charcoal: #1C1C1C;
-    --text-mid: #4A4A3A;
-    --text-light: #7A7A6A;
+    --cream: #FFF1EA;
+    --cream-dark: #EDDFD7;
+    --forest: #584725;
+    --forest-mid: #463B27;
+    --forest-light: #877B6B;
+    --gold: #B4A585;
+    --gold-light: #D1A9A9;
+    --charcoal: #463B27;
+    --text-mid: #695944;
+    --text-light: #877B6B;
     --white: #FFFFFF;
-    --display: 'Playfair Display', Georgia, serif;
-    --body: 'DM Sans', system-ui, sans-serif;
+    --blush: #F5DADA;
+    --display: 'Syne', sans-serif;
+    --body: 'Instrument Sans', system-ui, sans-serif;
+    --script: 'Alex Brush', cursive;
   }
 
   html { scroll-behavior: smooth; }
@@ -38,9 +40,9 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(249,245,238,0.96);
+    background: rgba(255,241,234,0.94);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(196,132,42,0.15);
+    border-bottom: 1px solid rgba(88,71,37,0.12);
     padding: 0 5%;
     display: flex; align-items: center; justify-content: space-between;
     height: 72px;
@@ -87,7 +89,9 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    background: linear-gradient(160deg, #1e3a1e 0%, #2D4A2D 45%, #3a5c2a 100%);
+    background:
+      radial-gradient(circle at top right, rgba(209,169,169,0.45), transparent 34%),
+      linear-gradient(160deg, #fff1ea 0%, #f5dada 42%, #eddfd7 100%);
     position: relative;
     display: flex;
     align-items: center;
@@ -97,8 +101,8 @@
   .hero::before {
     content: '';
     position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23ffffff08'/%3E%3C/svg%3E") repeat;
-    opacity: 0.4;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%2358472512'/%3E%3C/svg%3E") repeat;
+    opacity: 0.6;
     pointer-events: none;
   }
   .hero-inner {
@@ -110,9 +114,9 @@
   }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(196,132,42,0.18);
-    border: 1px solid rgba(196,132,42,0.35);
-    color: var(--gold-light);
+    background: rgba(245,218,218,0.72);
+    border: 1px solid rgba(88,71,37,0.16);
+    color: var(--forest);
     font-size: 0.78rem; font-weight: 600;
     letter-spacing: 0.12em; text-transform: uppercase;
     padding: 0.45rem 1rem; border-radius: 40px;
@@ -123,14 +127,22 @@
     font-family: var(--display);
     font-size: clamp(2.8rem, 5vw, 4.2rem);
     font-weight: 700;
-    color: var(--cream);
+    color: var(--charcoal);
     line-height: 1.12;
     margin-bottom: 1.5rem;
     letter-spacing: -0.01em;
   }
-  .hero h1 em { color: var(--gold-light); font-style: normal; }
+  .hero h1 em {
+    color: var(--forest);
+    font-family: var(--script);
+    font-size: 1.18em;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-left: 0.08em;
+  }
   .hero p {
-    color: rgba(249,245,238,0.75);
+    color: rgba(70,59,39,0.78);
     font-size: 1.05rem;
     line-height: 1.8;
     margin-bottom: 2.5rem;
@@ -138,8 +150,8 @@
   }
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn-primary {
-    background: var(--gold);
-    color: var(--charcoal);
+    background: var(--forest);
+    color: var(--cream);
     font-family: var(--body);
     font-size: 0.88rem;
     font-weight: 600;
@@ -151,10 +163,10 @@
     transition: background 0.2s, transform 0.15s;
     display: inline-block;
   }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-primary:hover { background: var(--forest-mid); transform: translateY(-1px); }
   .btn-outline {
     background: transparent;
-    color: var(--cream);
+    color: var(--forest);
     font-family: var(--body);
     font-size: 0.88rem;
     font-weight: 500;
@@ -162,12 +174,12 @@
     padding: 0.9rem 2rem;
     border-radius: 40px;
     text-decoration: none;
-    border: 1.5px solid rgba(249,245,238,0.4);
+    border: 1.5px solid rgba(88,71,37,0.28);
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s;
     display: inline-block;
   }
-  .btn-outline:hover { border-color: var(--cream); background: rgba(249,245,238,0.08); }
+  .btn-outline:hover { border-color: var(--forest); background: rgba(88,71,37,0.06); }
   .hero-visual {
     position: relative;
     display: flex; align-items: center; justify-content: center;
@@ -177,8 +189,9 @@
     aspect-ratio: 4/5;
     border-radius: 24px 24px 120px 24px;
     overflow: hidden;
-    border: 2px solid rgba(196,132,42,0.3);
+    border: 2px solid rgba(88,71,37,0.18);
     position: relative;
+    box-shadow: 0 28px 60px rgba(70,59,39,0.15);
   }
   .hero-img-frame img { width: 100%; height: 100%; object-fit: cover; }
   .hero-float-card {
@@ -187,23 +200,23 @@
     border-radius: 16px;
     padding: 1rem 1.4rem;
     border: 1px solid var(--cream-dark);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    box-shadow: 0 18px 40px rgba(70,59,39,0.14);
   }
   .hero-float-card .num { font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: var(--forest); }
   .hero-float-card .label { font-size: 0.78rem; color: var(--text-light); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
   .hero-float-card2 {
     position: absolute; top: 40px; right: -20px;
-    background: var(--forest);
+    background: rgba(88,71,37,0.94);
     border-radius: 16px;
     padding: 0.9rem 1.2rem;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   }
   .hero-float-card2 p { color: var(--cream); font-size: 0.82rem; font-weight: 500; }
-  .hero-float-card2 span { color: var(--gold-light); font-weight: 700; font-size: 1.1rem; }
+  .hero-float-card2 span { color: var(--blush); font-weight: 700; font-size: 1.1rem; }
 
   /* TICKER */
   .ticker {
-    background: var(--forest);
+    background: var(--forest-mid);
     padding: 0.8rem 0;
     overflow: hidden;
     white-space: nowrap;
@@ -215,9 +228,9 @@
   .ticker-inner span {
     font-size: 0.78rem; font-weight: 600;
     letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(249,245,238,0.75);
+    color: rgba(255,241,234,0.78);
   }
-  .ticker-inner span.dot { color: var(--gold); }
+  .ticker-inner span.dot { color: var(--gold-light); }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* SECTION BASE */
@@ -238,7 +251,15 @@
     line-height: 1.15;
     letter-spacing: -0.01em;
   }
-  h2.section-title em { color: var(--forest); font-style: normal; }
+  h2.section-title em {
+    color: var(--forest);
+    font-family: var(--script);
+    font-size: 1.12em;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-left: 0.08em;
+  }
   .section-subtitle {
     margin-top: 0.8rem;
     color: var(--text-mid);
@@ -261,7 +282,7 @@
     padding: 2rem;
     transition: transform 0.2s, box-shadow 0.2s;
   }
-  .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(45,74,45,0.1); }
+  .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(70,59,39,0.1); }
   .why-icon {
     width: 52px; height: 52px;
     border-radius: 14px;
@@ -306,7 +327,7 @@
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
   }
-  .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(45,74,45,0.12); }
+  .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(70,59,39,0.12); }
   .product-img {
     width: 100%; aspect-ratio: 4/3;
     object-fit: cover;
@@ -332,7 +353,7 @@
     text-transform: uppercase; letter-spacing: 0.06em;
     margin-left: auto;
   }
-  .product-badge.new { background: var(--gold); color: var(--charcoal); }
+  .product-badge.new { background: var(--gold-light); color: var(--forest-mid); }
   .product-badge.sale { background: #c0392b; color: white; }
 
   /* PARTNERSHIP TIERS */
@@ -356,7 +377,7 @@
   }
   .tier-card.featured {
     border-color: var(--gold);
-    background: rgba(196,132,42,0.07);
+    background: rgba(209,169,169,0.09);
   }
   .tier-featured-badge {
     position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
@@ -420,7 +441,7 @@
     width: 45%; aspect-ratio: 1;
     border-radius: 20px; overflow: hidden;
     border: 4px solid var(--cream);
-    background: linear-gradient(135deg, #3D6B3D, #2D4A2D);
+    background: linear-gradient(135deg, #B4A585, #584725);
     display: flex; align-items: center; justify-content: center; font-size: 3rem;
   }
   .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
@@ -442,7 +463,7 @@
     content: '';
     position: absolute; top: 28px; left: 10%; right: 10%;
     height: 1px; background: var(--cream-dark);
-    border-top: 2px dashed rgba(45,74,45,0.2);
+    border-top: 2px dashed rgba(88,71,37,0.22);
     z-index: 0;
   }
   .step {
@@ -539,14 +560,14 @@
 
   /* FOOTER */
   footer {
-    background: #111;
+    background: #2F2519;
     padding: 3rem 5% 2rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,241,234,0.08);
   }
   .footer-inner {
     max-width: 1200px; margin: 0 auto;
     display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
-    padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,241,234,0.08);
     margin-bottom: 2rem;
   }
   .footer-brand .logo { font-family: var(--display); font-size: 1.3rem; font-weight: 700; color: var(--cream); }
@@ -697,8 +718,8 @@
   .certs-strip {
     background: var(--cream-dark);
     padding: 2rem 5%;
-    border-top: 1px solid rgba(196,132,42,0.2);
-    border-bottom: 1px solid rgba(196,132,42,0.2);
+    border-top: 1px solid rgba(88,71,37,0.14);
+    border-bottom: 1px solid rgba(88,71,37,0.14);
   }
   .certs-inner {
     max-width: 1200px; margin: 0 auto;
@@ -1053,10 +1074,10 @@
         <div class="stars">★★★★★</div>
         <blockquote>"Zirut Harvest's makhana has become our best-selling snack product. The quality is consistently excellent, and the B2B team is super responsive."</blockquote>
         <div class="testi-author">
-          <div class="testi-avatar">RK</div>
+          <div class="testi-avatar">A</div>
           <div>
-            <div class="name">Rajesh Kumar</div>
-            <div class="role">Owner, Health Store — Patna</div>
+            <div class="name">Aquib</div>
+            <div class="role">Owner, Health Store — Bhopal</div>
           </div>
         </div>
       </div>
@@ -1064,10 +1085,10 @@
         <div class="stars">★★★★★</div>
         <blockquote>"We switched to Zirut Harvest for our café's snack menu and customer feedback has been overwhelmingly positive. Peri Peri Makhana is a huge hit!"</blockquote>
         <div class="testi-author">
-          <div class="testi-avatar">PS</div>
+          <div class="testi-avatar">LM</div>
           <div>
-            <div class="name">Priya Sharma</div>
-            <div class="role">Founder, Urban Bites Café — Delhi</div>
+            <div class="name">Laxmikanth Mishra</div>
+            <div class="role"> Darjeeling tea — Patna</div>
           </div>
         </div>
       </div>
@@ -1078,7 +1099,7 @@
           <div class="testi-avatar">AM</div>
           <div>
             <div class="name">Amit Mishra</div>
-            <div class="role">Distributor — Bihar & Jharkhand</div>
+            <div class="role">Distributor — East champaran</div>
           </div>
         </div>
       </div>
