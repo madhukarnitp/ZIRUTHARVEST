@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zirut Harvest – B2B Partner Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F9F5EE;
+    --cream-dark: #EDE6D6;
+    --forest: #2D4A2D;
+    --forest-mid: #3D6B3D;
+    --forest-light: #5C8C5C;
+    --gold: #C4842A;
+    --gold-light: #E8A84A;
+    --charcoal: #1C1C1C;
+    --text-mid: #4A4A3A;
+    --text-light: #7A7A6A;
+    --white: #FFFFFF;
+    --display: 'Playfair Display', Georgia, serif;
+    --body: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  section[id] { scroll-margin-top: 96px; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(249,245,238,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(196,132,42,0.15);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    display: block;
+    height: 42px;
+    width: auto;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--forest); }
+  .nav-cta {
+    background: var(--forest);
+    color: var(--cream) !important;
+    padding: 0.5rem 1.4rem !important;
+    border-radius: 40px;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em;
+    font-size: 0.82rem !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--forest-mid) !important; color: var(--cream) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #1e3a1e 0%, #2D4A2D 45%, #3a5c2a 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 5%;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23ffffff08'/%3E%3C/svg%3E") repeat;
+    opacity: 0.4;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; padding: 120px 0 80px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(196,132,42,0.18);
+    border: 1px solid rgba(196,132,42,0.35);
+    color: var(--gold-light);
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.45rem 1rem; border-radius: 40px;
+    margin-bottom: 1.8rem; width: fit-content;
+  }
+  .hero-badge::before { content: '◆'; font-size: 0.6rem; }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.12;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em { color: var(--gold-light); font-style: normal; }
+  .hero p {
+    color: rgba(249,245,238,0.75);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--charcoal);
+    font-family: var(--body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.9rem 2rem;
+    border-radius: 40px;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    font-family: var(--body);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0.9rem 2rem;
+    border-radius: 40px;
+    text-decoration: none;
+    border: 1.5px solid rgba(249,245,238,0.4);
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--cream); background: rgba(249,245,238,0.08); }
+  .hero-visual {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-frame {
+    width: 100%; max-width: 460px;
+    aspect-ratio: 4/5;
+    border-radius: 24px 24px 120px 24px;
+    overflow: hidden;
+    border: 2px solid rgba(196,132,42,0.3);
+    position: relative;
+  }
+  .hero-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-float-card {
+    position: absolute; bottom: -20px; left: -30px;
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 1rem 1.4rem;
+    border: 1px solid var(--cream-dark);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  .hero-float-card .num { font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: var(--forest); }
+  .hero-float-card .label { font-size: 0.78rem; color: var(--text-light); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+  .hero-float-card2 {
+    position: absolute; top: 40px; right: -20px;
+    background: var(--forest);
+    border-radius: 16px;
+    padding: 0.9rem 1.2rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .hero-float-card2 p { color: var(--cream); font-size: 0.82rem; font-weight: 500; }
+  .hero-float-card2 span { color: var(--gold-light); font-weight: 700; font-size: 1.1rem; }
+
+  /* TICKER */
+  .ticker {
+    background: var(--forest);
+    padding: 0.8rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex; gap: 3rem;
+    animation: ticker 25s linear infinite;
+  }
+  .ticker-inner span {
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(249,245,238,0.75);
+  }
+  .ticker-inner span.dot { color: var(--gold); }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTION BASE */
+  section { padding: 6rem 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  h2.section-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  h2.section-title em { color: var(--forest); font-style: normal; }
+  .section-subtitle {
+    margin-top: 0.8rem;
+    color: var(--text-mid);
+    font-size: 1rem;
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* WHY B2B */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(45,74,45,0.1); }
+  .why-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: var(--cream);
+    border: 1px solid var(--cream-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .why-card h3 { font-family: var(--display); font-size: 1.2rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
+  .why-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+
+  /* PRODUCTS */
+  .products-section { background: var(--white); }
+  .products-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .tab-row { display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .tab {
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    border: 1.5px solid var(--cream-dark);
+    background: transparent;
+    font-family: var(--body);
+    font-size: 0.83rem; font-weight: 600;
+    color: var(--text-mid);
+    cursor: pointer; transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .tab.active, .tab:hover { background: var(--forest); border-color: var(--forest); color: var(--cream); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .product-card {
+    background: var(--cream);
+    border: 1px solid var(--cream-dark);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-align: left;
+  }
+  .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(45,74,45,0.12); }
+  .product-card:focus-visible {
+    outline: 3px solid rgba(196,132,42,0.45);
+    outline-offset: 4px;
+  }
+  .product-card[hidden] { display: none; }
+  .product-img {
+    width: 100%; aspect-ratio: 4/3;
+    object-fit: cover;
+    background: linear-gradient(135deg, #e8d9c0, #c8b890);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+  }
+  .product-img img { width: 100%; height: 100%; object-fit: cover; }
+  .product-body { padding: 1.2rem 1.4rem; }
+  .product-tag {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .product-card h4 { font-family: var(--display); font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.3rem; }
+  .product-summary {
+    font-size: 0.86rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    min-height: 2.8rem;
+  }
+  .product-cta-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--forest);
+  }
+  .product-price-row { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
+  .price-sale { font-size: 1.1rem; font-weight: 700; color: var(--forest); }
+  .price-orig { font-size: 0.85rem; color: var(--text-light); text-decoration: line-through; }
+  .product-badge {
+    display: inline-block;
+    font-size: 0.68rem; font-weight: 700;
+    padding: 0.2rem 0.6rem; border-radius: 40px;
+    background: var(--forest); color: var(--cream);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-left: auto;
+  }
+  .product-badge.new { background: var(--gold); color: var(--charcoal); }
+  .product-badge.sale { background: #c0392b; color: white; }
+  .coming-soon-card {
+    border: 2px dashed var(--cream-dark);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  /* PRODUCT MODAL */
+  .product-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 1.25rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 200;
+  }
+  .product-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .product-modal-panel {
+    position: relative;
+    width: min(1200px, 100%);
+    height: 100%;
+    background: var(--cream);
+    border-radius: 28px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+  }
+  .product-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(28,28,28,0.45);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+  .product-modal-media {
+    background: linear-gradient(180deg, #f4ecdd 0%, #d5c19a 100%);
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .product-modal-media img {
+    width: 100%;
+    max-width: 480px;
+    max-height: 78vh;
+    object-fit: contain;
+    filter: drop-shadow(0 22px 36px rgba(0,0,0,0.16));
+  }
+  .product-modal-content {
+    padding: 3rem 2.5rem 2.5rem;
+    overflow-y: auto;
+  }
+  .product-modal-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    background: rgba(196,132,42,0.14);
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .product-modal-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.05;
+    margin: 1rem 0 0.85rem;
+    color: var(--charcoal);
+  }
+  .product-modal-description {
+    color: var(--text-mid);
+    font-size: 1rem;
+    line-height: 1.85;
+    max-width: 56ch;
+  }
+  .product-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .product-modal-stat {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 18px;
+    padding: 1rem 1.1rem;
+  }
+  .product-modal-stat-label {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+  }
+  .product-modal-stat-value {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+  .product-modal-section-title {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    color: var(--forest);
+    margin: 1.5rem 0 0.8rem;
+  }
+  .product-modal-list {
+    list-style: none;
+    display: grid;
+    gap: 0.7rem;
+  }
+  .product-modal-list li {
+    display: flex;
+    gap: 0.7rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .product-modal-list li::before {
+    content: '✓';
+    color: var(--forest);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .product-modal-note {
+    margin-top: 1.5rem;
+    padding: 1rem 1.1rem;
+    background: rgba(45,74,45,0.08);
+    border-left: 3px solid var(--forest);
+    border-radius: 14px;
+    color: var(--text-mid);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  .product-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .product-modal-actions .btn-outline {
+    color: var(--forest);
+    border-color: rgba(45,74,45,0.22);
+  }
+  .product-modal-actions .btn-outline:hover {
+    background: rgba(45,74,45,0.06);
+    border-color: var(--forest);
+  }
+
+  body.modal-open { overflow: hidden; }
+
+  /* PARTNERSHIP TIERS */
+  .tiers-section { background: var(--charcoal); }
+  .tiers-section .section-title { color: var(--cream); }
+  .tiers-section .section-title em { color: var(--gold-light); }
+  .tiers-section .section-subtitle { color: rgba(249,245,238,0.65); }
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .tier-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .tier-card.featured {
+    border-color: var(--gold);
+    background: rgba(196,132,42,0.07);
+  }
+  .tier-featured-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--charcoal);
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 1.2rem; border-radius: 40px;
+    white-space: nowrap;
+  }
+  .tier-card h3 {
+    font-family: var(--display); font-size: 1.4rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 0.3rem;
+  }
+  .tier-card .tier-sub { font-size: 0.82rem; color: rgba(249,245,238,0.5); margin-bottom: 1.5rem; }
+  .tier-moq {
+    font-size: 1.8rem; font-weight: 700; font-family: var(--display);
+    color: var(--gold-light); margin-bottom: 0.3rem;
+  }
+  .tier-moq span { font-size: 0.85rem; font-weight: 400; color: rgba(249,245,238,0.5); }
+  .tier-features { list-style: none; margin: 1.5rem 0 2rem; }
+  .tier-features li {
+    font-size: 0.88rem; color: rgba(249,245,238,0.75);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; gap: 0.6rem; align-items: flex-start;
+  }
+  .tier-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+  .btn-tier {
+    display: block; width: 100%; text-align: center;
+    padding: 0.85rem; border-radius: 40px;
+    font-family: var(--body); font-size: 0.88rem; font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none; cursor: pointer; border: none;
+    transition: all 0.2s;
+  }
+  .btn-tier-outline {
+    background: transparent;
+    border: 1.5px solid rgba(249,245,238,0.25);
+    color: var(--cream);
+  }
+  .btn-tier-outline:hover { border-color: var(--cream); background: rgba(249,245,238,0.07); }
+  .btn-tier-gold { background: var(--gold); color: var(--charcoal); }
+  .btn-tier-gold:hover { background: var(--gold-light); }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-main {
+    width: 100%; aspect-ratio: 3/4;
+    border-radius: 24px; overflow: hidden;
+    background: linear-gradient(135deg, #c8b890, #8c6e3c);
+    display: flex; align-items: center; justify-content: center; font-size: 6rem;
+  }
+  .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+  .about-img-accent {
+    position: absolute; bottom: -20px; right: -20px;
+    width: 45%; aspect-ratio: 1;
+    border-radius: 20px; overflow: hidden;
+    border: 4px solid var(--cream);
+    background: linear-gradient(135deg, #3D6B3D, #2D4A2D);
+    display: flex; align-items: center; justify-content: center; font-size: 3rem;
+  }
+  .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+  .stat-row { display: flex; gap: 2.5rem; margin: 2.5rem 0; }
+  .stat-item { }
+  .stat-item .num {
+    font-family: var(--display); font-size: 2.2rem; font-weight: 700;
+    color: var(--forest);
+  }
+  .stat-item .lbl { font-size: 0.82rem; color: var(--text-light); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* PROCESS */
+  .process-section { background: var(--cream-dark); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0; margin-top: 3rem; position: relative;
+  }
+  .process-steps::after {
+    content: '';
+    position: absolute; top: 28px; left: 10%; right: 10%;
+    height: 1px; background: var(--cream-dark);
+    border-top: 2px dashed rgba(45,74,45,0.2);
+    z-index: 0;
+  }
+  .step {
+    text-align: center; padding: 0 1rem 2rem;
+    position: relative; z-index: 1;
+  }
+  .step-num {
+    width: 56px; height: 56px;
+    background: var(--forest);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 1.2rem; font-weight: 700; color: var(--cream);
+    margin: 0 auto 1.2rem;
+    border: 4px solid var(--cream-dark);
+  }
+  .step h4 { font-family: var(--display); font-size: 1rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
+  .step p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
+
+  /* TESTIMONIALS */
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .testi-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 20px;
+    padding: 2rem;
+  }
+  .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .testi-card blockquote { font-size: 0.95rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 700; color: var(--cream);
+    flex-shrink: 0;
+  }
+  .testi-author .name { font-weight: 600; font-size: 0.88rem; color: var(--charcoal); }
+  .testi-author .role { font-size: 0.78rem; color: var(--text-light); }
+
+  /* CONTACT */
+  .contact-section { background: var(--forest); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem;
+    align-items: flex-start;
+  }
+  .contact-section .section-title { color: var(--cream); }
+  .contact-section .section-title em { color: var(--gold-light); }
+  .contact-section .section-subtitle { color: rgba(249,245,238,0.65); }
+  .contact-info { margin-top: 2.5rem; }
+  .contact-info-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+  .ci-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.9rem; color: rgba(249,245,238,0.8); }
+  .contact-form {
+    background: var(--cream);
+    border-radius: 24px;
+    padding: 2.5rem;
+  }
+  .contact-form h3 { font-family: var(--display); font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; }
+  .contact-form p { font-size: 0.88rem; color: var(--text-mid); margin-bottom: 1.8rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-mid); display: block; margin-bottom: 0.4rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.8rem 1rem;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 10px;
+    background: var(--white);
+    font-family: var(--body); font-size: 0.9rem; color: var(--charcoal);
+    transition: border-color 0.2s;
+    outline: none;
+    appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--forest); }
+  .form-group input[aria-invalid="true"], .form-group select[aria-invalid="true"], .form-group textarea[aria-invalid="true"] {
+    border-color: #b83c2f;
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-status {
+    display: none;
+    margin-bottom: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .form-status.is-visible { display: block; }
+  .form-status.info {
+    background: rgba(196,132,42,0.12);
+    color: #875816;
+    border: 1px solid rgba(196,132,42,0.24);
+  }
+  .form-status.success {
+    background: rgba(45,74,45,0.1);
+    color: var(--forest);
+    border: 1px solid rgba(45,74,45,0.18);
+  }
+  .form-status.error {
+    background: rgba(192,57,43,0.1);
+    color: #a93226;
+    border: 1px solid rgba(192,57,43,0.18);
+  }
+  .form-submit {
+    width: 100%; padding: 1rem;
+    background: var(--forest); color: var(--cream);
+    border: none; border-radius: 40px;
+    font-family: var(--body); font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.05em; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--forest-mid); transform: translateY(-1px); }
+  .form-submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
+    transform: none;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111;
+    padding: 3rem 5% 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 2rem;
+  }
+  .footer-brand .logo { font-family: var(--display); font-size: 1.3rem; font-weight: 700; color: var(--cream); }
+  .footer-brand .logo span { color: var(--gold); }
+  .footer-brand p { font-size: 0.85rem; color: rgba(249,245,238,0.45); margin-top: 0.8rem; line-height: 1.7; max-width: 240px; }
+  .footer-col h5 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.5rem; }
+  .footer-col ul li a { font-size: 0.85rem; color: rgba(249,245,238,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--cream); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-bottom p { font-size: 0.78rem; color: rgba(249,245,238,0.3); }
+
+  /* CERTIFICATIONS STRIP */
+  .certs-strip {
+    background: var(--cream-dark);
+    padding: 2rem 5%;
+    border-top: 1px solid rgba(196,132,42,0.2);
+    border-bottom: 1px solid rgba(196,132,42,0.2);
+  }
+  .certs-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .cert-item { display: flex; align-items: center; gap: 0.6rem; }
+  .cert-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .cert-item span { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 100px 0 60px; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-img-wrap { display: none; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .process-steps::after { display: none; }
+    .product-modal-panel { grid-template-columns: 1fr; height: min(100%, 960px); }
+    .product-modal-content { padding: 2rem 1.4rem 1.5rem; }
+    .product-modal-media { min-height: 260px; }
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .stat-row { gap: 1.5rem; }
+    .nav-logo img { height: 36px; }
+    .product-modal { padding: 0; }
+    .product-modal-panel { border-radius: 0; }
+    .product-modal-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/820dbd_87019b3df09c4728aa7da46bad174386~mv2.png/v1/fill/w_270,h_138,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%20zirut%20harvest.png" alt="Zirut Harvest logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#partnership">Partnership</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#contact" class="nav-cta">Become a Partner</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">B2B Wholesale Partner Program</div>
+      <h1>India's Finest <em>Makhana</em> & Premium Dry Fruits</h1>
+      <p>Partner with Zirut Harvest to stock nature's most nutritious snacks. Premium makhana and artisanal dry fruits, hand-sourced and sun-dried — crafted for brands that don't compromise on quality.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Enquire Now</a>
+        <a href="#products" class="btn-outline">View Catalogue</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-frame">
+        <img src="https://static.wixstatic.com/media/820dbd_00274d883e8d414fb86634d0aac3d7e5~mv2.jpeg" alt="Premium Makhana" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:5rem;\'>🪷</div>'">
+      </div>
+      <div class="hero-float-card">
+        <div class="num">7+</div>
+        <div class="label">Makhana Variants</div>
+      </div>
+      <div class="hero-float-card2">
+        <p>Premium Quality</p>
+        <span>100% Natural</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Healthy Snacking</span><span class="dot">◆</span>
+    <span>Pure Nutrition</span><span class="dot">◆</span>
+    <span>Premium Makhana</span><span class="dot">◆</span>
+    <span>Dry Fruit Excellence</span><span class="dot">◆</span>
+    <span>Naturally Delicious</span><span class="dot">◆</span>
+    <span>Zirut Harvest</span><span class="dot">◆</span>
+    <span>Healthy Snacking</span><span class="dot">◆</span>
+    <span>Pure Nutrition</span><span class="dot">◆</span>
+    <span>Premium Makhana</span><span class="dot">◆</span>
+    <span>Dry Fruit Excellence</span><span class="dot">◆</span>
+    <span>Naturally Delicious</span><span class="dot">◆</span>
+    <span>Zirut Harvest</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS STRIP -->
+<div class="certs-strip">
+  <div class="certs-inner">
+    <div class="cert-item">
+      <div class="cert-icon">🌿</div>
+      <span>100% Natural Ingredients</span>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">☀️</div>
+      <span>Sun-Dried & Artisanal</span>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🏆</div>
+      <span>Premium Grade Quality</span>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🚚</div>
+      <span>Pan-India Delivery</span>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">📦</div>
+      <span>Bulk Wholesale Available</span>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🤝</div>
+      <span>Flexible MOQ</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHY PARTNER -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">Why Partner With Us</div>
+        <h2 class="section-title">Harvest Built on <em>Trust & Tradition</em></h2>
+        <p class="section-subtitle">At Zirut Harvest, we believe in the power of pure nutrition. Our journey began with a simple mission: to bring artisanal quality makhana and hand-picked dry fruits from the harvest straight to your shelves.</p>
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="num">7+</div>
+            <div class="lbl">Product Variants</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">100%</div>
+            <div class="lbl">Natural</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">2026</div>
+            <div class="lbl">Founded</div>
+          </div>
+        </div>
+        <p style="color:var(--text-mid);font-size:0.92rem;line-height:1.8;">Every snack is a testament to our commitment to health-conscious living, offering a naturally delicious alternative that fuels your customers' bodies with essential nutrients and zero compromise.</p>
+      </div>
+      <div class="about-img-wrap">
+        <div class="about-img-main">
+          <img src="https://static.wixstatic.com/media/820dbd_1babbcb34f1f41d49ef0c72959632653~mv2.jpeg" alt="Premium Makhana" onerror="this.style.display='none';this.parentElement.innerHTML='🌾'">
+        </div>
+        <div class="about-img-accent">
+          <img src="https://static.wixstatic.com/media/820dbd_00274d883e8d414fb86634d0aac3d7e5~mv2.jpeg" alt="Dry Fruits" onerror="this.style.display='none';this.parentElement.innerHTML='🥜'">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY B2B CARDS -->
+<section style="padding-top:0;">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏷️</div>
+        <h3>Competitive Wholesale Pricing</h3>
+        <p>Tiered pricing structure designed for bulk buyers. The more you order, the better margins you enjoy — built for sustainable business growth.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌾</div>
+        <h3>Farm-to-Shelf Sourcing</h3>
+        <p>Direct sourcing from trusted farms ensures freshness, consistency, and traceability — giving your customers confidence in every bite.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📦</div>
+        <h3>Private Label Options</h3>
+        <p>Repackage under your own brand with our white-label program. Minimum order quantities start low to help you test and scale.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚀</div>
+        <h3>Fast & Reliable Dispatch</h3>
+        <p>Efficient fulfillment with pan-India logistics. Dedicated B2B account management for all partner queries and reorders.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="section-inner">
+    <div class="products-header">
+      <div>
+        <div class="section-tag">Product Catalogue</div>
+        <h2 class="section-title">Our <em>Signature Range</em></h2>
+        <div class="tab-row">
+          <button class="tab active" type="button" data-filter="all">All Products</button>
+          <button class="tab" type="button" data-filter="makhana">Makhana</button>
+          <button class="tab" type="button" data-filter="roasted">Roasted Variants</button>
+          <button class="tab" type="button" data-filter="dry-fruits">Dry Fruits</button>
+        </div>
+      </div>
+      <a href="https://www.zirutharvest.com/category/all-products" target="_blank" class="btn-primary" style="white-space:nowrap;">View Full Shop →</a>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Product 1 -->
+      <article class="product-card" role="button" tabindex="0" aria-haspopup="dialog" data-product-id="premium-makhana-100" data-category="makhana">
+        <div class="product-img">
+          <img src="https://static.wixstatic.com/media/820dbd_00274d883e8d414fb86634d0aac3d7e5~mv2.jpeg" alt="Premium Makhana 100gm" onerror="this.parentElement.innerHTML='🪷'">
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Best Seller · Makhana</div>
+          <h4>Premium Makhana 100gm</h4>
+          <p class="product-summary">Classic roasted makhana with a light, clean profile built for retail shelves and healthy snacking lines.</p>
+          <div class="product-price-row">
+            <span class="product-badge">Best Seller</span>
+          </div>
+          <div class="product-cta-hint">View details →</div>
+        </div>
+      </article>
+
+      <!-- Product 2 -->
+      <article class="product-card" role="button" tabindex="0" aria-haspopup="dialog" data-product-id="makhana-250" data-category="makhana">
+        <div class="product-img">
+          <img src="https://static.wixstatic.com/media/820dbd_2acc2975c4a94f9e8aa83de72c719dd4~mv2.png" alt="Makhana 250gm" onerror="this.parentElement.innerHTML='🌾'">
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Makhana · Value Pack</div>
+          <h4>Makhana 250gm</h4>
+          <p class="product-summary">A larger value pack for repeat buyers, cafés, wellness stores, and growing wholesale partners.</p>
+          <div class="product-cta-hint">View details →</div>
+        </div>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="product-card" role="button" tabindex="0" aria-haspopup="dialog" data-product-id="extra-premium-200" data-category="makhana">
+        <div class="product-img">
+          <img src="https://static.wixstatic.com/media/820dbd_1babbcb34f1f41d49ef0c72959632653~mv2.jpeg" alt="Extra Premium Makhana 200gm" onerror="this.parentElement.innerHTML='🏆'">
+        </div>
+        <div class="product-body">
+          <div class="product-tag">New Arrival · Makhana</div>
+          <h4>Extra Premium Makhana 200gm</h4>
+          <p class="product-summary">A premium-grade selection focused on larger kernels, elevated presentation, and gift-ready positioning.</p>
+          <div class="product-price-row">
+            <span class="product-badge new">New</span>
+          </div>
+          <div class="product-cta-hint">View details →</div>
+        </div>
+      </article>
+
+      <!-- Product 4 -->
+      <article class="product-card" role="button" tabindex="0" aria-haspopup="dialog" data-product-id="peri-peri-roasted" data-category="roasted">
+        <div class="product-img" style="background:linear-gradient(135deg,#e8443020,#ff6b3520);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">
+          <img src="https://static.wixstatic.com/media/820dbd_37f5380c5d1f47b0aca4971065671168~mv2.png" alt="Peri Peri Makhana" onerror="this.parentElement.innerHTML='🌶️'">
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Roasted · Flavoured</div>
+          <h4>Peri Peri Roasted Makhana 90gm</h4>
+          <p class="product-summary">Bold, spicy seasoning crafted for modern snack aisles and café counters that need a punchier flavor story.</p>
+          <div class="product-cta-hint">View details →</div>
+        </div>
+      </article>
+
+      <!-- Product 5 -->
+      <article class="product-card" role="button" tabindex="0" aria-haspopup="dialog" data-product-id="pudina-roasted" data-category="roasted">
+        <div class="product-img">
+          <img src="https://static.wixstatic.com/media/820dbd_6ba42b2f637149d58ff4b0050814f121~mv2.png" alt="Pudina Roasted Makhana" onerror="this.parentElement.innerHTML='🌿'">
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Roasted · Flavoured</div>
+          <h4>Pudina Roasted Makhana 90gm</h4>
+          <p class="product-summary">A crisp mint-forward profile designed for customers who want fresh flavour with light, crunchy texture.</p>
+          <div class="product-price-row">
+            <span class="product-badge new">New</span>
+          </div>
+          <div class="product-cta-hint">View details →</div>
+        </div>
+      </article>
+
+      <!-- Product 6 -->
+      <article class="product-card" role="button" tabindex="0" aria-haspopup="dialog" data-product-id="cheese-roasted" data-category="roasted">
+        <div class="product-img">
+          <img src="https://static.wixstatic.com/media/820dbd_c109d573da504904988349fd601f063a~mv2.png" alt="Cheese Roasted Makhana" onerror="this.parentElement.innerHTML='🧀'">
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Roasted · Flavoured</div>
+          <h4>Cheese Roasted Makhana 90gm</h4>
+          <p class="product-summary">A creamy savory variant that balances indulgent flavour with the clean-label appeal of makhana.</p>
+          <div class="product-cta-hint">View details →</div>
+        </div>
+      </article>
+
+      <!-- Product 7 -->
+      <article class="product-card" role="button" tabindex="0" aria-haspopup="dialog" data-product-id="tikha-spicy-roasted" data-category="roasted">
+        <div class="product-img">
+          <img src="https://static.wixstatic.com/media/820dbd_f8c92a9819d149f3b0ceea2907e956ea~mv2.png" alt="Tikha Spicy Roasted Makhana" onerror="this.parentElement.innerHTML='🔥'">
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Roasted · Spicy</div>
+          <h4>Tikha Spicy Roasted Makhana 90gm</h4>
+          <p class="product-summary">A sharper spice-led SKU suited for impulse purchases, combo packs, and bold snack assortments.</p>
+          <div class="product-cta-hint">View details →</div>
+        </div>
+      </article>
+
+      <!-- Coming Soon Card -->
+      <article class="product-card coming-soon-card" role="button" tabindex="0" aria-haspopup="dialog" data-product-id="premium-dry-fruits" data-category="dry-fruits">
+        <div style="font-size:2.5rem;">🥜</div>
+        <div style="font-family:var(--display);font-size:1rem;font-weight:600;color:var(--text-mid);">Premium Dry Fruits</div>
+        <div style="font-size:0.8rem;color:var(--text-light);">Coming Soon</div>
+        <div class="product-cta-hint">View details →</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="product-modal" id="product-modal" aria-hidden="true">
+  <div class="product-modal-panel" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+    <button class="product-modal-close" type="button" id="product-modal-close" aria-label="Close product details">×</button>
+    <div class="product-modal-media">
+      <img id="product-modal-image" src="" alt="">
+    </div>
+    <div class="product-modal-content">
+      <div class="product-modal-tag" id="product-modal-tag"></div>
+      <h3 class="product-modal-title" id="product-modal-title"></h3>
+      <p class="product-modal-description" id="product-modal-description"></p>
+
+      <div class="product-modal-grid" id="product-modal-specs"></div>
+
+      <h4 class="product-modal-section-title">Why Partners Choose It</h4>
+      <ul class="product-modal-list" id="product-modal-highlights"></ul>
+
+      <div class="product-modal-note" id="product-modal-note"></div>
+
+      <div class="product-modal-actions">
+        <button class="btn-primary" type="button" id="product-modal-enquire">Enquire for This Product</button>
+        <a href="#products" class="btn-outline" id="product-modal-back">Back to Catalogue</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom: 0.5rem;">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title" style="margin:0 auto;">From Enquiry to <em>First Delivery</em></h2>
+      <p class="section-subtitle" style="margin: 0.8rem auto 0; text-align:center; max-width:500px;">A straightforward onboarding process designed for speed and simplicity.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Submit Enquiry</h4>
+        <p>Fill out the B2B enquiry form with your business details and requirements.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Get a Quote</h4>
+        <p>Our team reviews your order and sends a tailored wholesale pricing quote within 24hrs.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Confirm Order</h4>
+        <p>Approve the quote, complete payment, and we begin preparing your shipment.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Receive Delivery</h4>
+        <p>Your order is dispatched with full tracking. Typical delivery 3–7 business days.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <h4>Reorder & Grow</h4>
+        <p>Enjoy seamless reordering with your dedicated account manager as your business scales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-tag">Partner Voices</div>
+      <h2 class="section-title">What Our <em>Partners Say</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Zirut Harvest's makhana has become our best-selling snack product. The quality is consistently excellent, and the B2B team is super responsive."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <div class="name">Rajesh Kumar</div>
+            <div class="role">Owner, Health Store — Patna</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"We switched to Zirut Harvest for our café's snack menu and customer feedback has been overwhelmingly positive. Peri Peri Makhana is a huge hit!"</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">PS</div>
+          <div>
+            <div class="name">Priya Sharma</div>
+            <div class="role">Founder, Urban Bites Café — Delhi</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Bulk ordering is seamless and the wholesale pricing makes sense for our margins. Very happy with delivery timelines and packaging quality."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">AM</div>
+          <div>
+            <div class="name">Amit Mishra</div>
+            <div class="role">Distributor — Bihar & Jharkhand</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div>
+        <div class="section-tag">B2B Enquiries</div>
+        <h2 class="section-title">Let's Build Something <em>Great Together</em></h2>
+        <p class="section-subtitle">Ready to partner? Reach out and our team will get back to you within 24 hours with a tailored wholesale quote.</p>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-val"><a href="mailto:zirut20@gmail.com" style="color:inherit;text-decoration:none;">zirut20@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ci-icon">🌐</div>
+            <div>
+              <div class="ci-label">Website</div>
+              <div class="ci-val"><a href="https://www.zirutharvest.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">www.zirutharvest.com</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-val">India — Pan-India Delivery Available</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="enquiry-form" novalidate>
+        <h3>Partner Enquiry Form</h3>
+        <p>Fill in the details below and we'll be in touch shortly.</p>
+        <div class="form-status info is-visible" id="form-status">This page is ready for static deployment. To save enquiries into Google Sheets, paste your Apps Script web app URL into the config near the bottom of this file.</div>
+        <input type="hidden" id="selected-product" name="selectedProduct" value="">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input id="first-name" name="firstName" type="text" placeholder="Rahul" required>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input id="last-name" name="lastName" type="text" placeholder="Sharma" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="company-name">Business / Company Name</label>
+          <input id="company-name" name="companyName" type="text" placeholder="Your Business Name" required>
+        </div>
+        <div class="form-group">
+          <label for="email-address">Email Address</label>
+          <input id="email-address" name="email" type="email" placeholder="you@business.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone-number">Phone Number</label>
+          <input id="phone-number" name="phone" type="tel" placeholder="+91 98765 43210" required>
+        </div>
+        <div class="form-group">
+          <label for="partnership-type">Partnership Type</label>
+          <select id="partnership-type" name="partnershipType" required>
+            <option value="">Select a tier...</option>
+            <option value="Starter (₹5,000 MOQ)">Starter (₹5,000 MOQ)</option>
+            <option value="Growth (₹15,000 MOQ)">Growth (₹15,000 MOQ)</option>
+            <option value="Enterprise (₹50,000+ MOQ)">Enterprise (₹50,000+ MOQ)</option>
+            <option value="Custom / Other">Custom / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="products-interest">Products of Interest</label>
+          <select id="products-interest" name="productsInterest" required>
+            <option value="">Select products...</option>
+            <option value="Premium Makhana (Plain)">Premium Makhana (Plain)</option>
+            <option value="Roasted Flavoured Makhana">Roasted Flavoured Makhana</option>
+            <option value="All Makhana Variants">All Makhana Variants</option>
+            <option value="Premium Dry Fruits (Coming Soon)">Premium Dry Fruits (Coming Soon)</option>
+            <option value="Full Range">Full Range</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your business and requirements..." required></textarea>
+        </div>
+        <button class="form-submit" id="form-submit" type="submit">Send Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">ZIRUT <span>HARVEST</span></div>
+      <p>Premium makhana and artisanal dry fruits, hand-sourced and sun-dried for those who don't compromise on wellness or flavour.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Products</h5>
+      <ul>
+        <li><a href="https://www.zirutharvest.com/category/all-products" target="_blank">Premium Makhana</a></li>
+        <li><a href="https://www.zirutharvest.com/category/all-products" target="_blank">Roasted Makhana</a></li>
+        <li><a href="https://www.zirutharvest.com/category/premium-dry-fruits-collection" target="_blank">Dry Fruits</a></li>
+        <li><a href="https://www.zirutharvest.com/category/all-products" target="_blank">All Products</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Partnership</h5>
+      <ul>
+        <li><a href="#partnership">Starter Tier</a></li>
+        <li><a href="#partnership">Growth Tier</a></li>
+        <li><a href="#partnership">Enterprise</a></li>
+        <li><a href="#contact">Enquire Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="https://www.zirutharvest.com" target="_blank">Website</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="mailto:zirut20@gmail.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Zirut Harvest. All rights reserved.</p>
+    <p><a href="mailto:zirut20@gmail.com" style="color:inherit;text-decoration:none;">zirut20@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  // Static deployment note:
+  // You only need to upload this HTML file to your hosting.
+  // If you want Google Sheets saving, paste your deployed Apps Script web app URL below.
+  window.ZIRUT_GOOGLE_SCRIPT_URL ='https://script.google.com/macros/s/AKfycbyTw43DCaT-UdXgPr3JtRXxYdGfyKY-OWIGcTFb4qyF1dFa1Dagx_a-_jjTsADQVJ7E/exec';
+</script>
+<script>
+  const PRODUCT_DATA = {
+    'premium-makhana-100': {
+      title: 'Premium Makhana 100gm',
+      tag: 'Best Seller · Makhana',
+      image: 'https://static.wixstatic.com/media/820dbd_00274d883e8d414fb86634d0aac3d7e5~mv2.jpeg',
+      description: 'A clean, premium makhana pack designed for modern health stores, gifting counters, and brands that want a dependable hero SKU. Its classic profile makes it easy to position across retail, wellness, and corporate gifting channels.',
+      specs: [
+        { label: 'Pack Size', value: '100gm retail pack' },
+        { label: 'MOQ Fit', value: 'Starter and growth partners' },
+        { label: 'Shelf Life', value: 'Long-format dry snack storage' },
+        { label: 'Positioning', value: 'Natural everyday snacking' }
+      ],
+      highlights: [
+        'Balanced entry-point SKU that works well for first-time B2B buyers.',
+        'Pairs easily with mixed snack shelves and wellness assortments.',
+        'Simple flavor profile makes sampling and repeat purchase easier.'
+      ],
+      note: 'Wholesale pricing, dispatch timelines, and private label availability are shared after enquiry based on your required order volume.',
+      formValue: 'Premium Makhana (Plain)'
+    },
+    'makhana-250': {
+      title: 'Makhana 250gm',
+      tag: 'Makhana · Value Pack',
+      image: 'https://static.wixstatic.com/media/820dbd_2acc2975c4a94f9e8aa83de72c719dd4~mv2.png',
+      description: 'A larger value pack built for repeat buyers and higher-consumption households. This format is ideal when your shelves need a stronger price-to-volume story without compromising the premium positioning of the brand.',
+      specs: [
+        { label: 'Pack Size', value: '250gm family-value pack' },
+        { label: 'MOQ Fit', value: 'Retailers and café resellers' },
+        { label: 'Shelf Life', value: 'Dry, sealed ambient storage' },
+        { label: 'Positioning', value: 'Value-led premium offering' }
+      ],
+      highlights: [
+        'Better suited for multi-unit retail baskets and bulk repeat demand.',
+        'Strong option for supermarkets, organic stores, and pantry-focused catalogs.',
+        'Works well as a core catalogue item for steady reorder cycles.'
+      ],
+      note: 'This pack is a good candidate for custom bulk quotations when you want better per-unit economics at higher order volumes.',
+      formValue: 'Premium Makhana (Plain)'
+    },
+    'extra-premium-200': {
+      title: 'Extra Premium Makhana 200gm',
+      tag: 'New Arrival · Makhana',
+      image: 'https://static.wixstatic.com/media/820dbd_1babbcb34f1f41d49ef0c72959632653~mv2.jpeg',
+      description: 'A more elevated makhana presentation focused on premium-grade selection, polished branding potential, and higher perceived value. It fits beautifully into gourmet counters, curated hampers, and premium wellness categories.',
+      specs: [
+        { label: 'Pack Size', value: '200gm premium pack' },
+        { label: 'MOQ Fit', value: 'Growth and enterprise partners' },
+        { label: 'Shelf Life', value: 'Sealed dry-snack storage' },
+        { label: 'Positioning', value: 'Premium and gifting ready' }
+      ],
+      highlights: [
+        'Higher-end presentation for gourmet retail and festive campaigns.',
+        'Suitable for white-label and gift-box positioning.',
+        'Helps create an upscale product ladder beside smaller makhana packs.'
+      ],
+      note: 'Use this SKU when you want a more premium margin narrative or a better fit for premium hampers and festive collections.',
+      formValue: 'Premium Makhana (Plain)'
+    },
+    'peri-peri-roasted': {
+      title: 'Peri Peri Roasted Makhana 90gm',
+      tag: 'Roasted · Flavoured',
+      image: 'https://static.wixstatic.com/media/820dbd_37f5380c5d1f47b0aca4971065671168~mv2.png',
+      description: 'A bold, fast-moving roasted makhana variant designed for shelves that need high flavor recall. Peri Peri brings punchy positioning for younger snack audiences, cafés, and premium convenience stores.',
+      specs: [
+        { label: 'Pack Size', value: '90gm roasted pouch' },
+        { label: 'MOQ Fit', value: 'Retail, cafés, snack counters' },
+        { label: 'Shelf Life', value: 'Ready-to-sell roasted format' },
+        { label: 'Positioning', value: 'Bold flavor-led snacking' }
+      ],
+      highlights: [
+        'Works especially well as an impulse buy and combo-pack SKU.',
+        'Flavor-forward profile helps diversify plain makhana assortments.',
+        'A strong option for cafés and lifestyle retail locations.'
+      ],
+      note: 'Ideal for partners who want stronger shelf differentiation and a more contemporary snack portfolio.',
+      formValue: 'Roasted Flavoured Makhana'
+    },
+    'pudina-roasted': {
+      title: 'Pudina Roasted Makhana 90gm',
+      tag: 'Roasted · Flavoured',
+      image: 'https://static.wixstatic.com/media/820dbd_6ba42b2f637149d58ff4b0050814f121~mv2.png',
+      description: 'Fresh, crisp, and approachable, the Pudina variant brings a lighter flavor note that appeals to a broad audience. It is a dependable choice for wellness-focused retailers that want flavor variety without going overly indulgent.',
+      specs: [
+        { label: 'Pack Size', value: '90gm roasted pouch' },
+        { label: 'MOQ Fit', value: 'Healthy retail and cafés' },
+        { label: 'Shelf Life', value: 'Sealed roasted snack format' },
+        { label: 'Positioning', value: 'Fresh and lighter flavor' }
+      ],
+      highlights: [
+        'Good bridge product between plain makhana and stronger spicy variants.',
+        'Broad consumer appeal for repeat purchase across age groups.',
+        'Easy fit for healthy-snack gifting and mixed flavor bundles.'
+      ],
+      note: 'This variant is especially useful when building a balanced roasted product range with both bold and mild flavor options.',
+      formValue: 'Roasted Flavoured Makhana'
+    },
+    'cheese-roasted': {
+      title: 'Cheese Roasted Makhana 90gm',
+      tag: 'Roasted · Flavoured',
+      image: 'https://static.wixstatic.com/media/820dbd_c109d573da504904988349fd601f063a~mv2.png',
+      description: 'Cheese roasted makhana delivers a more indulgent flavor profile while keeping the product rooted in healthier snacking. It gives partners a way to attract mainstream snack buyers into the makhana category.',
+      specs: [
+        { label: 'Pack Size', value: '90gm roasted pouch' },
+        { label: 'MOQ Fit', value: 'Retail and convenience channels' },
+        { label: 'Shelf Life', value: 'Dry, sealed shelf format' },
+        { label: 'Positioning', value: 'Savory comfort flavour' }
+      ],
+      highlights: [
+        'Brings a familiar taste cue that lowers trial friction for new buyers.',
+        'Useful for broadening appeal beyond strict wellness shoppers.',
+        'Pairs well with spicy SKUs in combo displays.'
+      ],
+      note: 'Best used as part of a multi-flavor assortment when you want a full-spectrum roasted line for stores or café counters.',
+      formValue: 'Roasted Flavoured Makhana'
+    },
+    'tikha-spicy-roasted': {
+      title: 'Tikha Spicy Roasted Makhana 90gm',
+      tag: 'Roasted · Spicy',
+      image: 'https://static.wixstatic.com/media/820dbd_f8c92a9819d149f3b0ceea2907e956ea~mv2.png',
+      description: 'A sharper, spice-led roasted makhana made for customers who prefer high-intensity savoury snacks. This SKU adds energy to the catalogue and works well in stores where bold flavor profiles move fastest.',
+      specs: [
+        { label: 'Pack Size', value: '90gm roasted pouch' },
+        { label: 'MOQ Fit', value: 'Fast-moving snack retailers' },
+        { label: 'Shelf Life', value: 'Roasted ambient pack' },
+        { label: 'Positioning', value: 'Spicy and high-impact' }
+      ],
+      highlights: [
+        'Excellent for bold assortments and regional spice-forward preferences.',
+        'Helps create a complete roasted ladder from mild to hot.',
+        'Strong add-on option for combo sales and tasting packs.'
+      ],
+      note: 'If your customers respond well to stronger masala snacks, this is a strong SKU to lead with in sampling or mixed cartons.',
+      formValue: 'Roasted Flavoured Makhana'
+    },
+    'premium-dry-fruits': {
+      title: 'Premium Dry Fruits',
+      tag: 'Coming Soon · Dry Fruits',
+      image: '',
+      description: 'A forthcoming extension of the Zirut Harvest range focused on premium dry fruits for gifting, pantry staples, and broader wellness retail programs. This line is ideal for partners who want a more complete healthy-snack portfolio under one supplier.',
+      specs: [
+        { label: 'Launch Status', value: 'Coming soon' },
+        { label: 'MOQ Fit', value: 'Growth and enterprise partners' },
+        { label: 'Use Case', value: 'Retail, gifting, bundles' },
+        { label: 'Positioning', value: 'Premium dry fruit assortment' }
+      ],
+      highlights: [
+        'Useful for partners who want to expand beyond makhana into a fuller assortment.',
+        'Strong fit for festive campaigns, gifting, and premium pantry lines.',
+        'Early enquiries help shape launch priorities and allocation.'
+      ],
+      note: 'Submit an enquiry to be notified first and to discuss the product mix that best matches your business.',
+      formValue: 'Premium Dry Fruits (Coming Soon)'
+    }
+  };
+
+  const GOOGLE_SCRIPT_URL = (window.ZIRUT_GOOGLE_SCRIPT_URL || '').trim();
+  const HAS_GOOGLE_SCRIPT = GOOGLE_SCRIPT_URL.startsWith('https://script.google.com/');
+
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  const productCards = Array.from(document.querySelectorAll('.product-card[data-product-id]'));
+  const modal = document.getElementById('product-modal');
+  const modalCloseButton = document.getElementById('product-modal-close');
+  const modalTag = document.getElementById('product-modal-tag');
+  const modalTitle = document.getElementById('product-modal-title');
+  const modalDescription = document.getElementById('product-modal-description');
+  const modalSpecs = document.getElementById('product-modal-specs');
+  const modalHighlights = document.getElementById('product-modal-highlights');
+  const modalNote = document.getElementById('product-modal-note');
+  const modalImage = document.getElementById('product-modal-image');
+  const modalEnquireButton = document.getElementById('product-modal-enquire');
+  const modalBackLink = document.getElementById('product-modal-back');
+  const enquiryForm = document.getElementById('enquiry-form');
+  const formStatus = document.getElementById('form-status');
+  const formSubmit = document.getElementById('form-submit');
+  const selectedProductInput = document.getElementById('selected-product');
+  const productInterestSelect = document.getElementById('products-interest');
+  const messageField = document.getElementById('message');
+  const contactSection = document.getElementById('contact');
+  let activeProductId = '';
+
+  function setStatus(message, type) {
+    formStatus.textContent = message;
+    formStatus.className = 'form-status is-visible ' + type;
+  }
+
+  function applyFilter(filter) {
+    tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.filter === filter));
+    productCards.forEach(card => {
+      const shouldShow = filter === 'all' || card.dataset.category === filter;
+      card.hidden = !shouldShow;
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => applyFilter(tab.dataset.filter));
+  });
+
+  function renderModal(productId) {
+    const product = PRODUCT_DATA[productId];
+    if (!product) return;
+
+    activeProductId = productId;
+    modalTag.textContent = product.tag;
+    modalTitle.textContent = product.title;
+    modalDescription.textContent = product.description;
+    modalSpecs.innerHTML = product.specs.map(spec => (
+      '<div class="product-modal-stat">' +
+        '<div class="product-modal-stat-label">' + spec.label + '</div>' +
+        '<div class="product-modal-stat-value">' + spec.value + '</div>' +
+      '</div>'
+    )).join('');
+    modalHighlights.innerHTML = product.highlights.map(item => '<li>' + item + '</li>').join('');
+    modalNote.textContent = product.note;
+
+    if (product.image) {
+      modalImage.src = product.image;
+      modalImage.alt = product.title;
+      modalImage.style.display = 'block';
+      modalImage.onerror = () => {
+        modalImage.style.display = 'none';
+      };
+    } else {
+      modalImage.removeAttribute('src');
+      modalImage.alt = '';
+      modalImage.style.display = 'none';
+    }
+  }
+
+  function openModal(productId) {
+    renderModal(productId);
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    modalCloseButton.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  productCards.forEach(card => {
+    const openCurrentCard = () => openModal(card.dataset.productId);
+    card.addEventListener('click', openCurrentCard);
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openCurrentCard();
+      }
+    });
+  });
+
+  modalCloseButton.addEventListener('click', closeModal);
+  modalBackLink.addEventListener('click', closeModal);
+  modal.addEventListener('click', event => {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  function prefillEnquiry(productId) {
+    const product = PRODUCT_DATA[productId];
+    if (!product) return;
+
+    selectedProductInput.value = product.title;
+    productInterestSelect.value = product.formValue;
+
+    if (!messageField.value.trim()) {
+      messageField.value = 'Interested in: ' + product.title + '\n\nPlease share MOQ, pricing, and dispatch details.';
+    } else if (!messageField.value.includes(product.title)) {
+      messageField.value = 'Interested in: ' + product.title + '\n\n' + messageField.value.trim();
+    }
+
+    setStatus('Enquiry prefilled for ' + product.title + '. Complete your details below to send it.', 'info');
+  }
+
+  modalEnquireButton.addEventListener('click', () => {
+    prefillEnquiry(activeProductId);
+    closeModal();
+    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      document.getElementById('first-name').focus();
+    }, 350);
+  });
+
+  function clearFieldErrors() {
+    enquiryForm.querySelectorAll('input, select, textarea').forEach(field => {
+      field.setAttribute('aria-invalid', 'false');
+    });
+  }
+
+  function validateForm() {
+    clearFieldErrors();
+
+    const requiredFields = Array.from(enquiryForm.querySelectorAll('[required]'));
+    let firstInvalidField = null;
+
+    requiredFields.forEach(field => {
+      const value = field.value.trim();
+      let invalid = !value;
+
+      if (!invalid && field.type === 'email') {
+        invalid = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      if (!invalid && field.name === 'phone') {
+        invalid = value.replace(/\D/g, '').length < 10;
+      }
+
+      if (invalid) {
+        field.setAttribute('aria-invalid', 'true');
+        if (!firstInvalidField) firstInvalidField = field;
+      }
+    });
+
+    if (firstInvalidField) {
+      setStatus('Please complete all required fields with valid details before sending your enquiry.', 'error');
+      firstInvalidField.focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  function buildPayload(formData) {
+    const payload = Object.fromEntries(formData.entries());
+    payload.submittedAt = new Date().toISOString();
+    payload.source = 'Zirut Harvest B2B landing page';
+    payload.pageTitle = document.title;
+    payload.pageUrl = window.location.href;
+    payload.userAgent = navigator.userAgent;
+    return payload;
+  }
+
+  async function submitToGoogleSheets(payload) {
+    const body = new URLSearchParams(payload);
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body
+    });
+  }
+
+  enquiryForm.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    if (!validateForm()) return;
+
+    const payload = buildPayload(new FormData(enquiryForm));
+    localStorage.setItem('zirutHarvestLastEnquiry', JSON.stringify(payload));
+
+    formSubmit.disabled = true;
+    formSubmit.textContent = 'Sending Enquiry...';
+
+    try {
+      if (!HAS_GOOGLE_SCRIPT) {
+        setStatus('The form is working, but Google Sheets is not connected yet. Add your Apps Script web app URL near the bottom of index.html to start saving submissions online.', 'info');
+        return;
+      }
+
+      await submitToGoogleSheets(payload);
+      enquiryForm.reset();
+      selectedProductInput.value = '';
+      clearFieldErrors();
+      setStatus('Thanks. Your enquiry has been submitted and should land in your Google Sheet shortly.', 'success');
+    } catch (error) {
+      console.error(error);
+      setStatus('Something went wrong while sending the enquiry. Please try again in a moment.', 'error');
+    } finally {
+      formSubmit.disabled = false;
+      formSubmit.textContent = 'Send Enquiry →';
+    }
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+      const targetSelector = this.getAttribute('href');
+      if (!targetSelector) return;
+
+      event.preventDefault();
+
+      if (targetSelector === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      const target = document.querySelector(targetSelector);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  if (HAS_GOOGLE_SCRIPT) {
+    setStatus('Google Sheets connection detected. New enquiries will be pushed to your sheet when the form is submitted.', 'success');
+  } else {
+    setStatus('This site can be deployed as a single HTML page. If you also want Google Sheets saving, paste your Apps Script web app URL into `window.ZIRUT_GOOGLE_SCRIPT_URL` near the bottom of this file.', 'info');
+  }
+
+  applyFilter('all');
+</script>
+</body>
+</html>
